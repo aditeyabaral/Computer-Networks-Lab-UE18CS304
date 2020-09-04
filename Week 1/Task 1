@@ -1,0 +1,85 @@
+TASK 1
+
+aditeya@computer-network-1:~$ ip addr
+1: lo: <LOOPBACK,UP,LOWER_UP> mtu 65536 qdisc noqueue state UNKNOWN group default qlen 1000
+    link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
+    inet 127.0.0.1/8 scope host lo
+       valid_lft forever preferred_lft forever
+    inet6 ::1/128 scope host 
+       valid_lft forever preferred_lft forever
+2: enp0s3: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc fq_codel state UP group default qlen 1000
+    link/ether 08:00:27:b6:c9:d2 brd ff:ff:ff:ff:ff:ff
+    inet 10.0.2.15/24 brd 10.0.2.255 scope global dynamic noprefixroute enp0s3
+       valid_lft 86014sec preferred_lft 86014sec
+    inet 10.0.4.26/24 scope global enp0s3
+       valid_lft forever preferred_lft forever
+    inet6 fe80::f007:b03b:d9c9:52d2/64 scope link noprefixroute 
+       valid_lft forever preferred_lft forever
+3: enp0s8: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc fq_codel state UP group default qlen 1000
+    link/ether 08:00:27:13:d5:d2 brd ff:ff:ff:ff:ff:ff
+    inet 192.168.0.182/24 brd 192.168.0.255 scope global dynamic noprefixroute enp0s8
+       valid_lft 4440sec preferred_lft 4440sec
+    inet6 fe80::1d27:5342:4866:65f5/64 scope link noprefixroute 
+       valid_lft forever preferred_lft forever
+
+
+aditeya@computer-network-1:~$ sudo ifconfig enp0s3 down
+aditeya@computer-network-1:~$ ifconfig
+enp0s8: flags=4163<UP,BROADCAST,RUNNING,MULTICAST>  mtu 1500
+        inet 192.168.0.182  netmask 255.255.255.0  broadcast 192.168.0.255
+        inet6 fe80::1d27:5342:4866:65f5  prefixlen 64  scopeid 0x20<link>
+        ether 08:00:27:13:d5:d2  txqueuelen 1000  (Ethernet)
+        RX packets 2559  bytes 379493 (379.4 KB)
+        RX errors 0  dropped 0  overruns 0  frame 0
+        TX packets 1989  bytes 222655 (222.6 KB)
+        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
+
+lo: flags=73<UP,LOOPBACK,RUNNING>  mtu 65536
+        inet 127.0.0.1  netmask 255.0.0.0
+        inet6 ::1  prefixlen 128  scopeid 0x10<host>
+        loop  txqueuelen 1000  (Local Loopback)
+        RX packets 1776  bytes 194645 (194.6 KB)
+        RX errors 0  dropped 0  overruns 0  frame 0
+        TX packets 1776  bytes 194645 (194.6 KB)
+        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
+
+
+aditeya@computer-network-1:~$ sudo ifconfig enp0s3 up
+aditeya@computer-network-1:~$ ifconfig
+enp0s3: flags=4163<UP,BROADCAST,RUNNING,MULTICAST>  mtu 1500
+        inet 10.0.2.15  netmask 255.255.255.0  broadcast 10.0.2.255
+        inet6 fe80::f007:b03b:d9c9:52d2  prefixlen 64  scopeid 0x20<link>
+        ether 08:00:27:b6:c9:d2  txqueuelen 1000  (Ethernet)
+        RX packets 36012  bytes 40701556 (40.7 MB)
+        RX errors 0  dropped 0  overruns 0  frame 0
+        TX packets 8088  bytes 861514 (861.5 KB)
+        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
+
+enp0s8: flags=4163<UP,BROADCAST,RUNNING,MULTICAST>  mtu 1500
+        inet 192.168.0.182  netmask 255.255.255.0  broadcast 192.168.0.255
+        inet6 fe80::1d27:5342:4866:65f5  prefixlen 64  scopeid 0x20<link>
+        ether 08:00:27:13:d5:d2  txqueuelen 1000  (Ethernet)
+        RX packets 2625  bytes 392439 (392.4 KB)
+        RX errors 0  dropped 0  overruns 0  frame 0
+        TX packets 2064  bytes 233797 (233.7 KB)
+        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
+
+lo: flags=73<UP,LOOPBACK,RUNNING>  mtu 65536
+        inet 127.0.0.1  netmask 255.0.0.0
+        inet6 ::1  prefixlen 128  scopeid 0x10<host>
+        loop  txqueuelen 1000  (Local Loopback)
+        RX packets 1916  bytes 210053 (210.0 KB)
+        RX errors 0  dropped 0  overruns 0  frame 0
+        TX packets 1916  bytes 210053 (210.0 KB)
+        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
+
+
+aditeya@computer-network-1:~$ ip neigh
+192.168.0.178 dev enp0s8 lladdr 08:00:27:f6:5a:62 STALE
+10.0.2.2 dev enp0s3 lladdr 52:54:00:12:35:02 REACHABLE
+192.168.0.1 dev enp0s8 lladdr 1c:3b:f3:b3:e2:54 REACHABLE
+
+
+
+
+

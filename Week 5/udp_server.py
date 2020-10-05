@@ -1,5 +1,5 @@
 import sys
-from socket import *
+from socket import socket, AF_INET, SOCK_DGRAM
 
 server_name = "10.0.2.15"
 server_port = 12000

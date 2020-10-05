@@ -1,5 +1,5 @@
 import sys
-from socket import *
+from socket import socket, AF_INET, SOCK_STREAM
 
 server_name = sys.argv[1].encode()
 server_port = int(sys.argv[2])

@@ -1,8 +1,9 @@
+import sys
 from socket import *
 
-server_name = "host"
-server_port = 12000
-client_socket = socket (AF_INET, SOCK_STREAM)
+server_name = sys.argv[1].encode()
+server_port = int(sys.argv[2])
+client_socket = socket(AF_INET, SOCK_STREAM)
 
 sentence = input("Enter sentence: ")
 client_socket.sendto(sentence, (server_name, server_port))

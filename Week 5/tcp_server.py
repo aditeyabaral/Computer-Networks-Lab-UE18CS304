@@ -7,7 +7,6 @@ server_socket.bind((server_name, server_port))
 server_socket.listen(1)
 
 print(f"Server 10.0.2.15 is ready to receive on port {server_port}")
-
 while True:
     connection_socket, address = server_socket.accept()
     sentence = connection_socket.recv(1024)

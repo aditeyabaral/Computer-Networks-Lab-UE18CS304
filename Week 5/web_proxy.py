@@ -11,13 +11,14 @@ def proxy_server_thread(client_conn, client_addr):
     request = client_conn.recv(BUF_SIZE)
     request_first_line = request.decode().split("\n")[0]
     url = request_first_line.split(" ")[1]
-    print("From", "\t", client_addr[0], "\t", "Request", "\t", request_first_line)
+    print("From", "\t", client_addr[0], "\t",
+          "Request", "\t", request_first_line)
 
     http_pos = url.find("://")
     if http_pos == -1:
         temp = url
     else:
-        temp = url[(http_pos + 3) :]
+        temp = url[(http_pos + 3):]
 
     port_pos = temp.find(":")
 
@@ -31,7 +32,7 @@ def proxy_server_thread(client_conn, client_addr):
         port = 80
         webserver = temp[:webserver_pos]
     else:
-        port = int((temp[(port_pos + 1) :])[: webserver_pos - port_pos - 1])
+        port = int((temp[(port_pos + 1):])[: webserver_pos - port_pos - 1])
         webserver = temp[:port_pos]
 
     try:
@@ -40,7 +41,8 @@ def proxy_server_thread(client_conn, client_addr):
         s.send(request)
         while 1:
             response = s.recv(BUF_SIZE)
-            response_first_line = response.decode("utf8", "ignore").partition("\n")[0]
+            response_first_line = response.decode(
+                "utf8", "ignore").partition("\n")[0]
             print(
                 "To", "\t", client_addr[0], "\t", "Response", "\t", response_first_line
             )
@@ -78,7 +80,8 @@ def proxy_server():
         sys.exit(1)
     while 1:
         client_conn, client_addr = s.accept()
-        threading._start_new_thread(proxy_server_thread, (client_conn, client_addr))
+        threading._start_new_thread(
+            proxy_server_thread, (client_conn, client_addr))
     s.close()
 
 

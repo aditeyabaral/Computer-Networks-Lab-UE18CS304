@@ -66,7 +66,7 @@ def proxy_server():
     else:
         port = int(sys.argv[1])
     host = ""
-    print("Proxy server Running on localhost :", port)
+    print("Proxy server 10.0.4.26 Running on localhost :", port)
     try:
         s = socket(AF_INET, SOCK_STREAM)
         s.bind((host, port))
